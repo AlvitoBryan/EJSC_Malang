@@ -1,17 +1,15 @@
 <section id="gallery" class="py-8 bg-[#020636]/20">
-    <div class="max-w-7xl mx-auto px-4 md:px-6">
 
 @push('styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
-        .swiper-container {
+        .gallery-swiper.swiper {
             width: 100%;
             padding-top: 30px;
             padding-bottom: 30px;
-            overflow: hidden;
         }
 
-        .swiper-slide {
+        .gallery-swiper .swiper-slide {
             background-position: center;
             background-size: cover;
             width: 250px;
@@ -19,14 +17,20 @@
             border-radius: 1rem;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
         }
 
         @media (min-width: 768px) {
-            .swiper-slide {
+            .gallery-swiper .swiper-slide {
                 width: 320px;
                 height: 380px;
             }
+        }
+
+        /* Active slide emphasis */
+        .gallery-swiper .swiper-slide-active {
+            cursor: pointer;
         }
 
         /* Hover Overlay styles */
@@ -51,36 +55,32 @@
             bottom: 0;
             pointer-events: auto;
         }
-
-        .swiper-slide-active {
-            cursor: pointer;
-        }
     </style>
 @endpush
 
-        <div class="flex items-end justify-between mb-1 md:mb-6"></div>
-             <div class="w-full text-center">
-                <p class="text-[#71A2CF] px-3 py-5 text-xs uppercase tracking-widest font-bold">GALLERY</p>
-                <h2 class="text-2xl md:text-3xl font-bold text-white" style="font-family: 'Poppins', sans-serif;">
-                    Highlights of <span class="opacity-50">EJSC</span>
-                </h2>
-                {{-- <p class="text-gray-400 mt-2 text-sm max-w-lg mx-auto">
-                    See the world through our lens: adventures and events in photos
-                </p> --}}
+    {{-- Section heading --}}
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+        <div class="w-full text-center">
+            <p class="text-[#71A2CF] px-3 py-5 text-xs uppercase tracking-widest font-bold">GALLERY</p>
+            <h2 class="text-2xl md:text-3xl font-bold text-white" style="font-family: 'Poppins', sans-serif;">
+                Highlights of <span class="opacity-50">EJSC</span>
+            </h2>
         </div>
+    </div>
 
-        {{-- Swiper Carousel --}}
-        <div class="swiper-container mySwiper">
-            <div class="swiper-wrapper">
-
+    {{-- Swiper Carousel --}}
+    <div class="gallery-swiper swiper">
+        <div class="swiper-wrapper">
+            {{-- Render slides 4 times to guarantee Swiper has enough slides for the loop mode (especially for coverflow + slidesPerView: auto) --}}
+            @for($i = 0; $i < 4; $i++)
                 @foreach($galeris as $galeri)
-                <div class="swiper-slide group cursor-pointer" onclick="window.location.href='{{ route('gallery.show', $galeri->id_galeri) }}'">
+                <div class="swiper-slide group" onclick="window.location.href='{{ route('gallery.show', $galeri->id_galeri) }}'">
                     @if($galeri->cover_foto)
                         @php
                             $isExternal = \Illuminate\Support\Str::startsWith($galeri->cover_foto, ['http://', 'https://']);
                             $coverSrc = $isExternal ? $galeri->cover_foto : asset('storage/' . $galeri->cover_foto);
                         @endphp
-                        <img src="{{ $coverSrc }}" class="w-full h-full object-cover">
+                        <img src="{{ $coverSrc }}" class="w-full h-full object-cover" alt="{{ $galeri->judul }}">
                     @else
                     <div class="w-full h-full flex items-center justify-center bg-[#123B7A]/30">
                         <svg class="w-9 h-9 text-[#71A2CF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -96,25 +96,27 @@
                     </div>
                 </div>
                 @endforeach
-
-            </div>
+            @endfor
         </div>
+    </div>
 
-        {{-- Navigation / Pagination Area --}}
+    {{-- Navigation Buttons --}}
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
         <div class="flex items-center justify-center gap-5 mt-4">
-            <button class="swiper-button-prev-custom w-12 h-12 rounded-full border-2 border-white flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors focus:outline-none focus:ring-2 focus:ring-[#F7AD12]">
+            <button class="gallery-prev-btn w-12 h-12 rounded-full border-2 border-white flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors focus:outline-none focus:ring-2 focus:ring-[#F7AD12]">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
             </button>
-            <button class="swiper-button-next-custom w-12 h-12 rounded-full border-2 border-white flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors focus:outline-none focus:ring-2 focus:ring-[#F7AD12]">
+            <button class="gallery-next-btn w-12 h-12 rounded-full border-2 border-white flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors focus:outline-none focus:ring-2 focus:ring-[#F7AD12]">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
             </button>
         </div>
+    </div>
 
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var swiper = new Swiper(".mySwiper", {
+            var swiper = new Swiper(".gallery-swiper", {
                 effect: "coverflow",
                 grabCursor: true,
                 centeredSlides: true,
@@ -129,17 +131,17 @@
                 autoplay: {
                     delay: 2500,
                     disableOnInteraction: false,
-                    pauseOnMouseEnter: true, // Pauses sliding when hovering providing time to read
+                    pauseOnMouseEnter: true,
                 },
                 loop: true,
+                speed: 600,
                 navigation: {
-                    nextEl: ".swiper-button-next-custom",
-                    prevEl: ".swiper-button-prev-custom",
+                    nextEl: ".gallery-next-btn",
+                    prevEl: ".gallery-prev-btn",
                 },
             });
         });
     </script>
 @endpush
 
-    </div>
 </section>
