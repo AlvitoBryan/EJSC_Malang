@@ -17,7 +17,7 @@
         <div class="mb-8 text-center">
             <span class="inline-block py-1 px-3 rounded-full bg-[#F7AD12]/10 border border-[#F7AD12]/20 text-[#F7AD12] text-xs font-semibold tracking-wider uppercase mb-3">Space Booking</span>
             <h1 class="text-2xl md:text-3xl font-bold text-white mb-2">Room Booking <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F7AD12] to-[#E3733D]">Form</span></h1>
-            <p class="text-gray-400 text-sm">Bakorwil III Malang Building Room Loan Form</p>
+            <p class="text-gray-400 text-xl pt-5">Bakorwil III Malang Building Room Loan Form</p>
         </div>
 
         {{-- Terms & Conditions Card --}}
@@ -28,7 +28,7 @@
                 </svg>
                 Terms & Conditions
             </h3>
-            <ul class="space-y-2 text-xs text-gray-300 list-none">
+            <ul class="space-y-2 text-md text-gray-300 list-none">
                 <li class="flex items-start gap-2"><span class="text-[#F7AD12] mt-0.5">•</span>Reservation must be made at least <strong class="text-white">1 week</strong> before the activity.</li>
                 <li class="flex items-start gap-2"><span class="text-[#F7AD12] mt-0.5">•</span>The applicant must submit an official request letter from the relevant institution.</li>
                 <li class="flex items-start gap-2"><span class="text-[#F7AD12] mt-0.5">•</span>All participants must complete the Public Satisfaction Survey (SKM) and maintain order during the activity.</li>
@@ -36,9 +36,9 @@
                 <li class="flex items-start gap-2"><span class="text-[#F7AD12] mt-0.5">•</span>Must comply with the terms and conditions of room use within the Bakorwil III Malang environment.</li>
             </ul>
             <div class="mt-4 bg-[#F7AD12]/10 border border-[#F7AD12]/30 rounded-xl p-4">
-                <p class="text-xs text-[#F7AD12] font-semibold">📌 After filling out the form, applicants MUST contact the Bakorwil III Malang Contact Person to confirm the room booking.</p>
-                <p class="text-xs text-gray-400 mt-1">(Messages will be replied on working days: Monday–Friday, 08:00–16:00 WIB)</p>
-                <div class="mt-3 flex flex-col gap-1 text-xs text-white">
+                <p class="text-md text-[#F7AD12] font-semibold">📌 After filling out the form, applicants MUST contact the Bakorwil III Malang Contact Person to confirm the room booking.</p>
+                <p class="text-md text-gray-400 mt-1">(Messages will be replied on working days: Monday–Friday, 08:00–16:00 WIB)</p>
+                <div class="mt-3 flex flex-col gap-1 text-md text-white">
                     <span class="font-medium">Contact Person:</span>
                     <span>📞 Pak Minarno – <strong>0816 1567 9629</strong> (Bakorwil III Malang)</span>
                     <span>📞 Alief – <strong>0813 3080 6923</strong> (EJSC)</span>
