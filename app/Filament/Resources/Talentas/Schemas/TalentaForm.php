@@ -104,28 +104,16 @@ class TalentaForm
 
                 \Filament\Schemas\Components\Section::make('Portfolio & Avatar')
                     ->schema([
-                        \Filament\Schemas\Components\Tabs::make('Avatar Photo')
-                            ->tabs([
-                                \Filament\Schemas\Components\Tabs\Tab::make('Upload PNG')
-                                    ->schema([
-                                        \Filament\Forms\Components\FileUpload::make('avatar')
-                                            ->label('Upload File (PNG)')
-                                            ->image()
-                                            ->acceptedFileTypes(['image/png'])
-                                            ->disk('public')
-                                            ->directory('talent-avatars'),
-                                    ]),
-                                \Filament\Schemas\Components\Tabs\Tab::make('Direct URL')
-                                    ->schema([
-                                        TextInput::make('avatar_url')
-                                            ->label('Avatar Image URL')
-                                            ->placeholder('https://google.com/image.jpg')
-                                            ->helperText('Paste direct link from the internet')
-                                            ->afterStateHydrated(fn ($set, $state, $record) => $record && Str::startsWith($record->avatar, 'http') ? $set('avatar_url', $record->avatar) : null)
-                                            ->dehydrated(false),
-                                    ]),
-                            ])
-                            ->persistTabInQueryString(),
+                        \Filament\Forms\Components\FileUpload::make('avatar')
+                            ->label('Avatar Photo (JPG/JPEG)')
+                            ->image()
+                            ->acceptedFileTypes(['image/jpeg', 'image/jpg'])
+                            ->imageResizeMode('cover')
+                            ->imageCropAspectRatio('1:1')
+                            ->imageResizeTargetWidth('800')
+                            ->imageResizeTargetHeight('800')
+                            ->disk('public')
+                            ->directory('talent-avatars'),
 
                         \Filament\Forms\Components\FileUpload::make('portfolio')
                             ->label('Portfolio (PDF)')
