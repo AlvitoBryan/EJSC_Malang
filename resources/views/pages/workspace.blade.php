@@ -17,20 +17,20 @@
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
             </svg>
-            Back to Home
+            {{ __('workspace_detail.back_to_home') }}
         </a>
 
         {{-- Workspace Header --}}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
             <div>
                 <span class="inline-flex items-center gap-2 bg-[#F7AD12]/10 border border-[#F7AD12]/30 text-[#F7AD12] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4">
-                    Workspace Detail
+                    {{ __('workspace_detail.title') }}
                 </span>
                 <h1 class="text-3xl md:text-5xl font-black text-white leading-tight uppercase mb-4" style="font-family: 'Poppins', sans-serif;">
                     {{ $ruangan->nama_ruangan }}
                 </h1>
                 <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-6">
-                    {{ $ruangan->deskripsi ?? 'No description available for this workspace.' }}
+                    {{ $ruangan->deskripsi ?? __('workspace_detail.no_desc') }}
                 </p>
 
                 <div class="flex flex-wrap items-center gap-6 text-sm">
@@ -39,7 +39,7 @@
                         <svg class="w-5 h-5 text-[#71A2CF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
-                        <span>Capacity: <strong class="text-white">{{ $ruangan->kapasitas }} Seats</strong></span>
+                        <span>{{ __('workspace_detail.capacity') }} <strong class="text-white">{{ $ruangan->kapasitas }} {{ __('workspace.seats') }}</strong></span>
                     </div>
                     @endif
 
@@ -48,7 +48,7 @@
                         <svg class="w-5 h-5 text-[#F7AD12]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.906 14.142 0M1.394 9.393c5.857-5.857 15.355-5.858 21.213 0" />
                         </svg>
-                        <span>Wi-Fi: <strong class="text-white">{{ $ruangan->wifi_speed }}</strong></span>
+                        <span>{{ __('workspace_detail.wifi') }} <strong class="text-white">{{ $ruangan->wifi_speed }}</strong></span>
                     </div>
                     @endif
 
@@ -57,7 +57,7 @@
                         <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
                         </svg>
-                        <span>Area: <strong class="text-white">{{ $ruangan->luas }} m²</strong></span>
+                        <span>{{ __('workspace_detail.area') }} <strong class="text-white">{{ $ruangan->luas }} m²</strong></span>
                     </div>
                     @endif
                 </div>
@@ -77,7 +77,7 @@
                 <svg class="w-6 h-6 text-[#71A2CF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                Room Details
+                {{ __('workspace_detail.room_details') }}
             </h3>
             <div class="text-gray-300 text-sm leading-relaxed">
                 {!! $ruangan->deskripsi_panjang !!}
@@ -88,9 +88,9 @@
         {{-- Booking History Section --}}
         <div class="bg-[#020636] border border-[#123B7A]/40 rounded-2xl overflow-hidden">
             <div class="px-6 py-5 border-b border-[#123B7A]/40 flex flex-wrap items-center justify-between gap-4">
-                <h3 class="text-xl font-bold text-white uppercase tracking-wider">Booking History</h3>
+                <h3 class="text-xl font-bold text-white uppercase tracking-wider">{{ __('workspace_detail.booking_history') }}</h3>
                 <a href="{{ route('peminjaman.create') }}" target="_blank" class="bg-[#F7AD12] text-[#01031C] text-xs font-bold px-4 py-2 rounded-full hover:brightness-110 transition-colors">
-                    Book This Space
+                    {{ __('workspace_detail.book_space') }}
                 </a>
             </div>
 
@@ -98,11 +98,11 @@
                 <table class="w-full text-left text-sm text-gray-400">
                     <thead class="text-xs text-[#71A2CF] uppercase bg-[#123B7A]/20 border-b border-[#123B7A]/40">
                         <tr>
-                            <th scope="col" class="px-6 py-4 font-semibold">Event Name</th>
-                            <th scope="col" class="px-6 py-4 font-semibold">Institution</th>
-                            <th scope="col" class="px-6 py-4 font-semibold">Date</th>
-                            <th scope="col" class="px-6 py-4 font-semibold">Time</th>
-                            <th scope="col" class="px-6 py-4 font-semibold">Status</th>
+                            <th scope="col" class="px-6 py-4 font-semibold">{{ __('workspace_detail.event_name') }}</th>
+                            <th scope="col" class="px-6 py-4 font-semibold">{{ __('workspace_detail.institution') }}</th>
+                            <th scope="col" class="px-6 py-4 font-semibold">{{ __('workspace_detail.date') }}</th>
+                            <th scope="col" class="px-6 py-4 font-semibold">{{ __('workspace_detail.time') }}</th>
+                            <th scope="col" class="px-6 py-4 font-semibold">{{ __('workspace_detail.status') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -112,13 +112,13 @@
                                 $statusText = '';
                                 if ($peminjaman->status === 'approved') {
                                     $statusClass = 'bg-green-500/10 text-green-400 border border-green-500/20';
-                                    $statusText = 'Approved';
+                                    $statusText = __('workspace_detail.approved');
                                 } elseif ($peminjaman->status === 'rejected') {
                                     $statusClass = 'bg-red-500/10 text-red-400 border border-red-500/20';
-                                    $statusText = 'Rejected';
+                                    $statusText = __('workspace_detail.rejected');
                                 } else {
                                     $statusClass = 'bg-[#F7AD12]/10 text-[#F7AD12] border border-[#F7AD12]/20';
-                                    $statusText = 'Pending';
+                                    $statusText = __('workspace_detail.pending');
                                 }
                             @endphp
                         <tr class="border-b border-[#123B7A]/20 hover:bg-[#123B7A]/10 transition-colors">
@@ -148,7 +148,7 @@
                                     <svg class="w-8 h-8 mb-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                                     </svg>
-                                    <p>No booking history found for this workspace.</p>
+                                    <p>{{ __('workspace_detail.no_history') }}</p>
                                 </div>
                             </td>
                         </tr>

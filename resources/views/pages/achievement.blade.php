@@ -19,10 +19,10 @@
     <section class="max-w-7xl mx-auto px-4 md:px-6 mb-16 relative z-10">
         <div class="text-center mt-8 mb-16">
             <h1 class="text-3xl md:text-5xl font-black text-white mb-6" style="font-family: 'Poppins', sans-serif;">
-                Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F7AD12] to-yellow-300">Achievements</span>
+                {!! __('achievement.title') !!}
             </h1>
             <p class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-                A collection of milestones, awards, and recognitions earned through the dedication and hard work of the East Java Super Corridor (EJSC) team in fostering innovation and collaboration.
+                {{ __('achievement.desc') }}
             </p>
         </div>
     </section>
@@ -33,13 +33,13 @@
         {{-- Filters/Categories --}}
         <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
             <a href="{{ route('achievement.index') }}" class="px-5 py-2 rounded-full {{ !request('category') ? 'bg-[#F7AD12] text-black font-bold' : 'bg-white/5 border border-white/10 text-gray-400 font-medium hover:text-white hover:bg-white/10' }} text-sm transition-all duration-300">
-                All Awards
+                {{ __('achievement.all_awards') }}
             </a>
             <a href="{{ route('achievement.index', ['category' => 'provincial']) }}" class="px-5 py-2 rounded-full {{ request('category') === 'provincial' ? 'bg-[#F7AD12] text-black font-bold' : 'bg-white/5 border border-white/10 text-gray-400 font-medium hover:text-white hover:bg-white/10' }} text-sm transition-all duration-300">
-                Provincial
+                {{ __('achievement.provincial') }}
             </a>
             <a href="{{ route('achievement.index', ['category' => 'national']) }}" class="px-5 py-2 rounded-full {{ request('category') === 'national' ? 'bg-[#F7AD12] text-black font-bold' : 'bg-white/5 border border-white/10 text-gray-400 font-medium hover:text-white hover:bg-white/10' }} text-sm transition-all duration-300">
-                National
+                {{ __('achievement.national') }}
             </a>
         </div>
 
@@ -96,7 +96,7 @@
 
                     <div class="mt-auto pt-6 border-t border-white/5">
                         <a href="{{ asset('storage/' . $ach->image) }}" target="_blank" class="flex items-center justify-between text-sm text-gray-300 hover:text-[#F7AD12] transition-all group/btn w-full">
-                            <span class="font-bold tracking-tight">View Certificate</span>
+                            <span class="font-bold tracking-tight">{{ __('achievement.view_cert') }}</span>
                             <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover/btn:border-[#F7AD12]/50 group-hover/btn:bg-[#F7AD12]/10 transform transition-all">
                                 <svg class="w-4 h-4 transform group-hover/btn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -108,7 +108,7 @@
             </div>
             @empty
             <div class="col-span-full py-20 text-center bg-[#101524]/60 rounded-3xl border border-white/10">
-                <p class="text-gray-400 font-medium">No accomplishments recorded yet. We're still building our track record!</p>
+                <p class="text-gray-400 font-medium">{{ __('achievement.empty') }}</p>
             </div>
             @endforelse
 
@@ -119,10 +119,10 @@
         {{-- Call to action bottom --}}
         <div class="mt-20 text-center bg-gradient-to-br from-[#123B7A]/20 to-[#020636] border border-[#123B7A]/30 rounded-3xl p-8 md:p-12 backdrop-blur-sm relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-[#F7AD12]/5 rounded-full blur-[80px]"></div>
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4" style="font-family: 'Poppins', sans-serif;">Continue Growing With Us</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto mb-8 text-sm md:text-base">We're committed to creating more impact. Join our collaborative space to foster your ideas, talents, and business potential.</p>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4" style="font-family: 'Poppins', sans-serif;">{{ __('achievement.grow_title') }}</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-8 text-sm md:text-base">{{ __('achievement.grow_desc') }}</p>
             <a href="{{ url('/#about') }}" class="inline-flex items-center justify-center gap-2px-8 py-3 px-8 rounded-full bg-gradient-to-r from-[#F7AD12] to-yellow-500 text-black font-bold text-sm tracking-wide shadow-[0_0_20px_rgba(247,173,18,0.3)] hover:shadow-[0_0_30px_rgba(247,173,18,0.5)] transform hover:-translate-y-1 transition-all duration-300">
-                Discover EJSC
+                {{ __('achievement.discover') }}
             </a>
         </div>
 

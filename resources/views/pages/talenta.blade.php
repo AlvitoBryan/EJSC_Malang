@@ -19,10 +19,10 @@
 
         <div class="text-center mt-5 md:text-left mb-12">
             <h1 class="text-2xl md:text-3xl font-black text-white mb-4" style="font-family: 'Poppins', sans-serif;">
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">EJSC Malang</span> Talent
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">EJSC Malang</span> {{ __('navbar.talent') }}
             </h1>
             <p class="text-gray-400 text-sm md:text-base max-w-3xl leading-relaxed">
-                EJSC Talent refers to creative individuals, freelancers, and professionals in the Bakorwil III Malang work area who have joined the East Java Super Corridor ecosystem. They are ready to collaborate to advance East Java's digital economy and creative industry.
+                {{ __('talenta.desc') }}
             </p>
         </div>
 
@@ -30,7 +30,7 @@
         {{-- How to Join Steps --}}
 <div class="mb-8">
     <h2 class="text-xl font-bold text-white mb-6 border-b border-white/10 pb-4">
-        Talent Registration Flow
+        {{ __('talenta.flow_title') }}
     </h2>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
@@ -42,16 +42,16 @@
             <div class="w-14 h-14 rounded-full bg-[#123B7A]/50 flex items-center justify-center mx-auto mb-4 border border-[#71A2CF]/30 shadow-[0_0_20px_rgba(113,162,207,0.2)]">
                 <span class="text-xl font-black text-white">1</span>
             </div>
-            <h3 class="text-white font-bold mb-2">Registration</h3>
+            <h3 class="text-white font-bold mb-2">{{ __('talenta.step1_title') }}</h3>
 
             <p class="text-gray-400 text-xs leading-relaxed mb-3">
-                Fill out the form with your personal data, skills, and upload required documents (KTP, CV & portfolio).
+                {{ __('talenta.step1_desc') }}
             </p>
 
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSeOOjH9wK606srXdHintlqhxm4CkYtn6Bsn_-MUT3JUzhebIA/viewform"
                target="_blank"
                class="inline-block text-xs font-semibold text-[#71A2CF] hover:text-[#F7AD12] transition-colors">
-               Register Now →
+               {{ __('talenta.register_now') }}
             </a>
         </div>
 
@@ -60,9 +60,9 @@
             <div class="w-14 h-14 rounded-full bg-[#123B7A]/50 flex items-center justify-center mx-auto mb-4 border border-[#71A2CF]/30 shadow-[0_0_20px_rgba(113,162,207,0.2)]">
                 <span class="text-xl font-black text-white">2</span>
             </div>
-            <h3 class="text-white font-bold mb-2">Review</h3>
+            <h3 class="text-white font-bold mb-2">{{ __('talenta.step2_title') }}</h3>
             <p class="text-gray-400 text-xs leading-relaxed">
-                The EJSC team will review your data and portfolio to assess your qualifications.
+                {{ __('talenta.step2_desc') }}
             </p>
         </div>
 
@@ -71,9 +71,9 @@
             <div class="w-14 h-14 rounded-full bg-[#123B7A]/50 flex items-center justify-center mx-auto mb-4 border border-[#71A2CF]/30 shadow-[0_0_20px_rgba(113,162,207,0.2)]">
                 <span class="text-xl font-black text-white">3</span>
             </div>
-            <h3 class="text-white font-bold mb-2">Onboarding</h3>
+            <h3 class="text-white font-bold mb-2">{{ __('talenta.step3_title') }}</h3>
             <p class="text-gray-400 text-xs leading-relaxed">
-                Approved talents will be listed in the EJSC database and may receive project or collaboration opportunities.
+                {{ __('talenta.step3_desc') }}
             </p>
         </div>
     </div>
@@ -87,15 +87,15 @@
         <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 bg-transparent backdrop-blur-sm p-4 rounded-xl border border-white/10">
             <p class="text-gray-400 text-sm">
                 @if($search)
-                    Found <span class="text-[#71A2CF] font-bold">{{ $talentas->total() }}</span> result(s) for "<span class="text-white font-semibold">{{ $search }}</span>"
+                    {{ __('talenta.found') }} <span class="text-[#71A2CF] font-bold">{{ $talentas->total() }}</span> {{ __('talenta.results_for') }} "<span class="text-white font-semibold">{{ $search }}</span>"
                 @else
-                    Showing <span class="text-[#71A2CF] font-bold">{{ $talentas->firstItem() ?? 0 }}</span> to <span class="text-[#71A2CF] font-bold">{{ $talentas->lastItem() ?? 0 }}</span> of <span class="text-[#71A2CF] font-bold">{{ $talentas->total() }}</span> Talents
+                    {{ __('talenta.showing') }} <span class="text-[#71A2CF] font-bold">{{ $talentas->firstItem() ?? 0 }}</span> {{ __('talenta.to') }} <span class="text-[#71A2CF] font-bold">{{ $talentas->lastItem() ?? 0 }}</span> {{ __('talenta.of') }} <span class="text-[#71A2CF] font-bold">{{ $talentas->total() }}</span> {{ __('talenta.talents') }}
                 @endif
             </p>
 
             <form action="{{ route('talenta') }}" method="GET" class="relative w-full md:w-64 flex">
                 <input type="text" name="search" value="{{ $search ?? '' }}"
-                       placeholder="Search by name or city..."
+                       placeholder="{{ __('talenta.search_placeholder') }}"
                        class="w-full bg-[#101215] border border-white/10 text-white text-sm rounded-lg pl-4 pr-10 py-2.5 focus:outline-none focus:border-[#71A2CF]/50 focus:ring-1 focus:ring-[#71A2CF]/50 transition-colors placeholder-gray-600">
                 <button type="submit" class="absolute inset-y-0 right-0 flex items-center pr-3 group">
                     <svg class="w-4 h-4 text-gray-500 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,17 +144,17 @@
                         @if($talent->portfolio)
                         <a href="{{ asset('storage/' . $talent->portfolio) }}" target="_blank" class="inline-flex items-center gap-2 bg-blue-600/20 hover:bg-blue-600/40 text-blue-300 text-[10px] font-bold px-3 py-1 rounded-full border border-blue-500/30 transition-colors uppercase tracking-wider mb-2">
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                            View Portfolio (PDF)
+                            {{ __('talenta.view_portfolio') }}
                         </a>
                         @else
                         <div class="inline-flex bg-white/5 text-gray-500 text-[10px] font-medium px-3 py-1 rounded-full border border-white/5">
-                            No Portfolio
+                            {{ __('talenta.no_portfolio') }}
                         </div>
                         @endif
                     </div>
 
                     <div class="w-full mt-auto pt-4 border-t border-white/5">
-                        <p class="text-gray-500 text-[10px] uppercase tracking-widest mb-1">Domicile</p>
+                        <p class="text-gray-500 text-[10px] uppercase tracking-widest mb-1">{{ __('talenta.domicile') }}</p>
                         <p class="text-gray-200 font-bold text-sm">{{ $talent->city_name }}</p>
                     </div>
                 </div>
@@ -165,12 +165,12 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                 </svg>
                 @if($search)
-                    <p class="text-white font-semibold text-lg mb-1">No results found</p>
-                    <p class="text-gray-400 text-sm">We couldn't find any talent matching "<span class="text-white font-medium">{{ $search }}</span>".</p>
-                    <p class="text-gray-500 text-xs mt-1">Try a different name or city.</p>
-                    <a href="{{ route('talenta') }}" class="inline-block mt-5 px-5 py-2 rounded-full bg-[#71A2CF]/20 border border-[#71A2CF]/30 text-[#71A2CF] text-sm hover:bg-[#71A2CF]/30 transition-colors">Clear Search</a>
+                    <p class="text-white font-semibold text-lg mb-1">{{ __('talenta.no_results') }}</p>
+                    <p class="text-gray-400 text-sm">{{ __('talenta.no_match') }} "<span class="text-white font-medium">{{ $search }}</span>".</p>
+                    <p class="text-gray-500 text-xs mt-1">{{ __('talenta.try_different') }}</p>
+                    <a href="{{ route('talenta') }}" class="inline-block mt-5 px-5 py-2 rounded-full bg-[#71A2CF]/20 border border-[#71A2CF]/30 text-[#71A2CF] text-sm hover:bg-[#71A2CF]/30 transition-colors">{{ __('talenta.clear_search') }}</a>
                 @else
-                    <p class="text-gray-400">No talents found. Be the first to join!</p>
+                    <p class="text-gray-400">{{ __('talenta.empty_talents') }}</p>
                 @endif
             </div>
             @endforelse

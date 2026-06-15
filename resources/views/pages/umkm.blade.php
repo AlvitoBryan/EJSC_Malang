@@ -22,7 +22,7 @@
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#F7AD12] to-yellow-300">EJSC Partner</span> SMEs
             </h1>
             <p class="text-gray-400 text-sm md:text-base max-w-3xl leading-relaxed">
-                EJSC Partner SMEs are micro, small, and medium enterprises in the Bakorwil III Malang work area that have been curated and fostered by the East Java Super Corridor team. We help facilitate legality, branding, and digital market access to encourage the growth of local products.
+                {{ __('umkm.desc') }}
             </p>
         </div>
 
@@ -30,7 +30,7 @@
         {{-- SME Partnership Flow --}}
 <div class="mb-8">
     <h2 class="text-xl font-bold text-white mb-6 border-b border-white/10 pb-4">
-        SME Partnership Flow
+        {{ __('umkm.flow_title') }}
     </h2>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
@@ -43,16 +43,16 @@
                 <span class="text-xl font-black text-white">1</span>
             </div>
 
-            <h3 class="text-white font-bold mb-2">Registration</h3>
+            <h3 class="text-white font-bold mb-2">{{ __('umkm.step1_title') }}</h3>
 
             <p class="text-gray-400 text-xs leading-relaxed mb-3">
-                Fill out the form with your business data, owner information, and upload required documents (KTP & product photos).
+                {{ __('umkm.step1_desc') }}
             </p>
 
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdY20LQVp0Dd_hdZhm4ZmeP1mSBTcKNCLMDT4zjX1rUa65gfA/viewform"
                target="_blank"
                class="inline-block text-xs font-semibold text-[#F7AD12] hover:text-yellow-300 transition-colors">
-               Register Now →
+               {{ __('talenta.register_now') }}
             </a>
         </div>
 
@@ -62,10 +62,10 @@
                 <span class="text-xl font-black text-white">2</span>
             </div>
 
-            <h3 class="text-white font-bold mb-2">Review</h3>
+            <h3 class="text-white font-bold mb-2">{{ __('umkm.step2_title') }}</h3>
 
             <p class="text-gray-400 text-xs leading-relaxed">
-                The EJSC team will review your business data, products, and selected facilitation needs.
+                {{ __('umkm.step2_desc') }}
             </p>
         </div>
 
@@ -75,10 +75,10 @@
                 <span class="text-xl font-black text-white">3</span>
             </div>
 
-            <h3 class="text-white font-bold mb-2">Onboarding</h3>
+            <h3 class="text-white font-bold mb-2">{{ __('umkm.step3_title') }}</h3>
 
             <p class="text-gray-400 text-xs leading-relaxed">
-                Selected SMEs will receive support and opportunities for product development and promotion through EJSC programs.
+                {{ __('umkm.step3_desc') }}
             </p>
         </div>
     </div>
@@ -92,15 +92,15 @@
         <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 bg-transparent backdrop-blur-sm p-4 rounded-xl border border-white/10">
             <p class="text-gray-400 text-sm">
                 @if($search)
-                    Found <span class="text-[#F7AD12] font-bold">{{ $umkms->total() }}</span> result(s) for "<span class="text-white font-semibold">{{ $search }}</span>"
+                    {{ __('talenta.found') }} <span class="text-[#F7AD12] font-bold">{{ $umkms->total() }}</span> {{ __('talenta.results_for') }} "<span class="text-white font-semibold">{{ $search }}</span>"
                 @else
-                    Showing <span class="text-[#F7AD12] font-bold">{{ $umkms->firstItem() ?? 0 }}</span> to <span class="text-[#F7AD12] font-bold">{{ $umkms->lastItem() ?? 0 }}</span> of <span class="text-[#F7AD12] font-bold">{{ $umkms->total() }}</span> Partner SMEs
+                    {{ __('talenta.showing') }} <span class="text-[#F7AD12] font-bold">{{ $umkms->firstItem() ?? 0 }}</span> {{ __('talenta.to') }} <span class="text-[#F7AD12] font-bold">{{ $umkms->lastItem() ?? 0 }}</span> {{ __('talenta.of') }} <span class="text-[#F7AD12] font-bold">{{ $umkms->total() }}</span> {{ __('umkm.smes') }}
                 @endif
             </p>
 
             <form action="{{ route('umkm') }}" method="GET" class="relative w-full md:w-64 flex">
                 <input type="text" name="search" value="{{ $search ?? '' }}"
-                       placeholder="Search by name or city..."
+                       placeholder="{{ __('talenta.search_placeholder') }}"
                        class="w-full bg-[#101215] border border-white/10 text-white text-sm rounded-lg pl-4 pr-10 py-2.5 focus:outline-none focus:border-[#F7AD12]/50 focus:ring-1 focus:ring-[#F7AD12]/50 transition-colors placeholder-gray-600">
                 <button type="submit" class="absolute inset-y-0 right-0 flex items-center pr-3 group">
                     <svg class="w-4 h-4 text-gray-500 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -160,7 +160,7 @@
                     </div>
 
                     <div class="w-full mt-auto pt-4 border-t border-white/5">
-                        <p class="text-gray-500 text-[10px] uppercase tracking-widest mb-1">Origin</p>
+                        <p class="text-gray-500 text-[10px] uppercase tracking-widest mb-1">{{ __('umkm.origin') }}</p>
                         <p class="text-gray-200 font-bold text-sm">{{ $umkm->city_name }}</p>
                     </div>
                 </div>
@@ -171,12 +171,12 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                 </svg>
                 @if($search)
-                    <p class="text-white font-semibold text-lg mb-1">No results found</p>
-                    <p class="text-gray-400 text-sm">We couldn't find any SME matching "<span class="text-white font-medium">{{ $search }}</span>".</p>
-                    <p class="text-gray-500 text-xs mt-1">Try a different name or city.</p>
-                    <a href="{{ route('umkm') }}" class="inline-block mt-5 px-5 py-2 rounded-full bg-[#F7AD12]/20 border border-[#F7AD12]/30 text-[#F7AD12] text-sm hover:bg-[#F7AD12]/30 transition-colors">Clear Search</a>
+                    <p class="text-white font-semibold text-lg mb-1">{{ __('talenta.no_results') }}</p>
+                    <p class="text-gray-400 text-sm">{{ __('umkm.no_match') }} "<span class="text-white font-medium">{{ $search }}</span>".</p>
+                    <p class="text-gray-500 text-xs mt-1">{{ __('talenta.try_different') }}</p>
+                    <a href="{{ route('umkm') }}" class="inline-block mt-5 px-5 py-2 rounded-full bg-[#F7AD12]/20 border border-[#F7AD12]/30 text-[#F7AD12] text-sm hover:bg-[#F7AD12]/30 transition-colors">{{ __('talenta.clear_search') }}</a>
                 @else
-                    <p class="text-gray-400">No partner SMEs found yet.</p>
+                    <p class="text-gray-400">{{ __('umkm.empty_smes') }}</p>
                 @endif
             </div>
             @endforelse
