@@ -15,15 +15,15 @@
             <div class="relative z-10">
                 <div class="inline-flex items-center gap-2 bg-[#123B7A]/30 border border-[#123B7A]/40 rounded-full px-3 py-1.5 mb-5">
                     <span class="w-2 h-2 bg-[#F7AD12] rounded-full animate-pulse"></span>
-                    <span class="text-xs text-[#71A2CF] font-medium">Best Co-working Space</span>
+                    <span class="text-xs text-[#71A2CF] font-medium">{{ __('hero.best_coworking') }}</span>
                 </div>
 
                 <h1 class="text-4xl md:text-4xl lg:text-5xl font-black uppercase leading-tight tracking-tight mb-4"
                     style="font-family: 'Poppins', sans-serif;">
-                    ELEVATE YOUR
-                    <span class="block text-white">WORKSPACE</span>
+                    {{ __('hero.elevate') }}
+                    <span class="block text-white">{{ __('hero.workspace') }}</span>
                     <span class="block mt-1">
-                        WITH
+                        {{ __('hero.with') }}
                         <span class="relative inline-block text-white">
                             EJSC
                             <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
@@ -34,20 +34,20 @@
                 </h1>
 
                 <p class="text-gray-400 text-sm leading-relaxed max-w-md mb-5">
-                    Find the ideal workspace that boosts productivity. Join more than
-                    <span class="text-white font-semibold">1,150 professionals</span> every month.
+                    {{ __('hero.desc_1') }}
+                    <span class="text-white font-semibold">{{ __('hero.desc_2') }}</span> {{ __('hero.desc_3') }}
                 </p>
 
                 <div class="flex flex-wrap items-center gap-4">
                     <a href="{{ route('peminjaman.create') }}"
                        target="_blank"
                        class="bg-[#F7AD12] text-[#01031C] font-semibold px-6 py-3 rounded-full text-sm hover:brightness-110 transition-all shadow-lg shadow-[#F7AD12]/20">
-                        Book Now
+                        {{ __('hero.book_now') }}
                     </a>
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSetuLm4-WwV6AMJEVmrjxPdE5XUeJOwdezKrS6XDHY1FrwDDw/viewform?fbzx=-7150895403706703302"
                       target="_blank`"
                        class="border border-[#71A2CF] text-[#71A2CF] font-semibold px-6 py-3 rounded-full text-sm hover:bg-[#71A2CF] hover:text-[#01031C] transition-all">
-                        Visitor Form
+                        {{ __('hero.visitor_form') }}
                     </a>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                         </div>
                         <div>
                             <p class="text-[#F7AD12] font-bold text-sm leading-none">1150+</p>
-                            <p class="text-gray-400 text-xs">Monthly Visitors</p>
+                            <p class="text-gray-400 text-xs">{{ __('hero.monthly_visitors') }}</p>
                         </div>
                     </div>
                 </div>
@@ -106,9 +106,9 @@
                               d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                     </svg>
                 </div>
-                <p class="text-gray-400 text-xs mb-1">Today's Status</p>
+                <p class="text-gray-400 text-xs mb-1">{{ __('hero.today_status') }}</p>
                 <p class="font-bold text-lg leading-tight {{ $isOpen ? 'text-white' : 'text-red-400' }}">
-                    {{ $isOpen ? 'We Are Open' : 'We Are Closed' }}
+                    {{ $isOpen ? __('hero.open') : __('hero.closed') }}
                 </p>
                 <p class="text-[#71A2CF] text-xs mt-2">08:00 - 16:00 WIB</p>
             </div>
@@ -123,7 +123,7 @@
                         </svg>
                     </div>
                     <div>
-                        <p class="text-white font-semibold text-sm leading-none">Plan of Meeting</p>
+                        <p class="text-white font-semibold text-sm leading-none">{{ __('hero.plan_meeting') }}</p>
                     </div>
                 </div>
 
@@ -134,13 +134,13 @@
                 </div>
                 @empty
                 <p class="text-gray-400 text-xs leading-relaxed">
-                    No scheduled agenda yet. Please check back later.
+                    {{ __('hero.no_agenda') }}
                 </p>
                 @endforelse
 
                 <a href="{{ route('agenda.index') }}"
                    class="mt-3 text-xs text-[#71A2CF] hover:text-[#F7AD12] transition-colors inline-flex items-center gap-1">
-                    View All
+                    {{ __('hero.view_all') }}
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
                     </svg>
@@ -150,10 +150,10 @@
             {{-- Card 3: Visitor Stats --}}
             <div class="bg-[#020636] border border-[#123B7A]/40 rounded-2xl p-5">
                 <div class="flex items-center justify-between mb-4">
-                    <p class="text-white font-semibold text-sm">Statistic Visitors</p>
+                    <p class="text-white font-semibold text-sm">{{ __('hero.statistic_visitors') }}</p>
                     <a href="#"
                        class="bg-[#F7AD12] text-[#01031C] font-semibold px-3 py-1.5 rounded-full text-xs hover:brightness-110 transition-all flex items-center gap-1">
-                        EXPLORE
+                        {{ __('hero.explore') }}
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                         </svg>
@@ -174,11 +174,11 @@
                 <div class="grid grid-cols-2 gap-2">
                     <div class="bg-[#F7AD12]/10 rounded-lg p-2 text-center">
                         <p class="text-[#F7AD12] text-l font-black leading-none">25</p>
-                        <p class="text-gray-400 text-xs">Today</p>
+                        <p class="text-gray-400 text-xs">{{ __('hero.today') }}</p>
                     </div>
                     <div class="bg-[#E3733D]/10 rounded-lg p-2 text-center">
                         <p class="text-[#E3733D] text-xs font-bold leading-tight">{{ now()->format('d M Y') }}</p>
-                        <p class="text-gray-400 text-xs">Date</p>
+                        <p class="text-gray-400 text-xs">{{ __('hero.date') }}</p>
                     </div>
                 </div>
             </div>

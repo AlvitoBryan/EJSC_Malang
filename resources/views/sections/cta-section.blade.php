@@ -4,21 +4,21 @@
         {{-- Left Content --}}
         <div class="w-full md:w-1/2 p-10 md:p-16 flex flex-col justify-center relative z-10">
             <h2 class="text-3xl md:text-4xl lg:text-[40px] font-bold mb-5 text-white leading-tight" style="font-family: 'Poppins', sans-serif;">
-                Ready to Level Up <br> Your Productivity?
+                {!! __('cta.title') !!}
             </h2>
             <p class="text-gray-400 text-sm md:text-base mb-10 max-w-md leading-relaxed">
-                Register as a visitor or book your favorite room right now.
+                {{ __('cta.desc') }}
             </p>
             <div class="flex flex-col sm:flex-row items-center gap-4">
                 <a href="{{ route('peminjaman.create') }}"
                    target="_blank"
                    class="bg-[#F7AD12] text-[#01031C] font-medium px-6 py-3 rounded-full text-sm hover:brightness-110 transition-all w-full sm:w-auto text-center shadow-lg shadow-[#F7AD12]/20">
-                    Book Now
+                    {{ __('cta.book_now') }}
                 </a>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSetuLm4-WwV6AMJEVmrjxPdE5XUeJOwdezKrS6XDHY1FrwDDw/viewform?fbzx=-7150895403706703302"
                    target="_blank"
                    class="bg-transparent border border-[#71A2CF] text-[#71A2CF] font-medium px-6 py-3 rounded-full text-sm hover:bg-[#71A2CF] hover:text-[#01031C] transition-all w-full sm:w-auto text-center">
-                    Visitor Form
+                    {{ __('cta.visitor_form') }}
                 </a>
             </div>
         </div>
@@ -94,7 +94,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z" />
                     </svg>
                     <div class="bg-[#71A2CF] text-[#01031C] text-xs font-bold px-4 py-2.5 rounded-full shadow-[0_0_15px_rgba(113,162,207,0.3)] whitespace-nowrap">
-                        Let's get started
+                        {{ __('cta.get_started') }}
                     </div>
                 </div>
             </div>

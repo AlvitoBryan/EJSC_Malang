@@ -5,9 +5,9 @@
 
     <div class="mb-10 text-center">
         <h2 class="text-2xl md:text-3xl font-bold text-white" style="font-family: 'Poppins', sans-serif;">
-            Profile <span class="opacity-50">EJSC</span>
+            {{ __('video.profile') }} <span class="opacity-50">{{ __('video.ejsc') }}</span>
         </h2>
-        <p class="text-gray-400 mt-3 text-sm md:text-base max-w-2xl mx-auto">Take a closer look at our collaborative spaces, facilities, and the vibrant community that brings ideas to life.</p>
+        <p class="text-gray-400 mt-3 text-sm md:text-base max-w-2xl mx-auto">{{ __('video.desc') }}</p>
     </div>
 
     {{-- Video Container --}}

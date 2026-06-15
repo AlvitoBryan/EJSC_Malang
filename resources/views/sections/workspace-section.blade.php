@@ -2,9 +2,9 @@
     {{-- Header --}}
     <div class="flex items-end justify-between mb-10">
         <div>
-            <p class="text-[#71A2CF] text-xs uppercase tracking-widest font-bold mb-2">Space Options</p>
+            <p class="text-[#71A2CF] text-xs uppercase tracking-widest font-bold mb-2">{{ __('workspace.space_options') }}</p>
             <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight" style="font-family: 'Poppins', sans-serif;">
-                Explore <span class="opacity-50">Space</span>
+                {{ __('workspace.explore') }} <span class="opacity-50">{{ __('workspace.space') }}</span>
             </h2>
         </div>
     </div>
@@ -33,7 +33,7 @@
                             <svg class="w-3 h-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                             </svg>
-                            {{ $ruangan->kapasitas }} Seats
+                            {{ $ruangan->kapasitas }} {{ __('workspace.seats') }}
                         </span>
                         @endif
                         @if($ruangan->luas)

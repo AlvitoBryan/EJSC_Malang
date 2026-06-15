@@ -61,9 +61,9 @@
     {{-- Section heading --}}
     <div class="max-w-7xl mx-auto px-4 md:px-6">
         <div class="w-full text-center">
-            <p class="text-[#71A2CF] px-3 py-5 text-xs uppercase tracking-widest font-bold">GALLERY</p>
+            <p class="text-[#71A2CF] px-3 py-5 text-xs uppercase tracking-widest font-bold">{{ __('gallery.gallery') }}</p>
             <h2 class="text-2xl md:text-3xl font-bold text-white" style="font-family: 'Poppins', sans-serif;">
-                Highlights of <span class="opacity-50">EJSC</span>
+                {{ __('gallery.highlights') }} <span class="opacity-50">{{ __('gallery.ejsc') }}</span>
             </h2>
         </div>
     </div>

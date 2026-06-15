@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\Route;
 // Landing Page
 Route::get('/', [LandingController::class, 'index'])->name('home');
 
+// Language Switcher
+Route::get('/lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'id'])) {
+        session()->put('locale', $locale);
+    }
+    return redirect()->back();
+})->name('lang.switch');
+
 // Talenta Space
 Route::get('/talenta', [\App\Http\Controllers\TalentaController::class, 'index'])->name('talenta');
 

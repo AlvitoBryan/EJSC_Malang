@@ -14,18 +14,18 @@
         <div class="hidden md:flex items-center gap-8">
             <a href="{{ route('home') }}"
                class="nav-scroll-link text-l font-medium transition-colors {{ request()->routeIs('home') ? 'text-[#F7AD12]' : 'text-gray-300 hover:text-white' }}">
-                Home
+                {{ __('navbar.home') }}
             </a>
 
             <a href="{{ url('/#about') }}"
                class="nav-scroll-link text-l font-medium text-gray-300 hover:text-white transition-colors">
-                About
+                {{ __('navbar.about') }}
             </a>
 
             {{-- Workspace Dropdown --}}
             <div class="relative group">
                 <button class="text-gray-300 hover:text-white text-l font-medium transition-colors flex items-center gap-1">
-                    Workspace
+                    {{ __('navbar.workspace') }}
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
@@ -44,7 +44,7 @@
             {{-- Ecosystem Dropdown --}}
             <div class="relative group">
                 <button class="{{ request()->routeIs('talenta') || request()->routeIs('umkm') || request()->routeIs('achievement.index') ? 'text-[#F7AD12]' : 'text-gray-300 hover:text-white' }} text-l font-medium transition-colors flex items-center gap-1">
-                    Ecosystem
+                    {{ __('navbar.ecosystem') }}
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
@@ -53,15 +53,15 @@
                             opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all shadow-xl">
                     <a href="{{ route('talenta') }}"
                        class="block px-4 py-2 text-l {{ request()->routeIs('talenta') ? 'text-[#F7AD12] font-semibold bg-white/5' : 'text-gray-300' }} hover:text-[#F7AD12] hover:bg-white/5 transition-colors">
-                        Talent
+                        {{ __('navbar.talent') }}
                     </a>
                     <a href="{{ route('umkm') }}"
                        class="block px-4 py-2 text-l {{ request()->routeIs('umkm') ? 'text-[#F7AD12] font-semibold bg-white/5' : 'text-gray-300' }} hover:text-[#F7AD12] hover:bg-white/5 transition-colors">
-                        Partner SMEs
+                        {{ __('navbar.partner_smes') }}
                     </a>
                     <a href="{{ route('achievement.index') }}"
                        class="block px-4 py-2 text-l {{ request()->routeIs('achievement.index') ? 'text-[#F7AD12] font-semibold bg-white/5' : 'text-gray-300' }} hover:text-[#F7AD12] hover:bg-white/5 transition-colors">
-                        Achievement
+                        {{ __('navbar.achievement') }}
                     </a>
                 </div>
             </div>
@@ -69,18 +69,24 @@
 
             <a href="{{ url('/#gallery') }}"
                class="nav-scroll-link text-l font-medium text-gray-300 hover:text-white transition-colors">
-                Gallery
+                {{ __('navbar.gallery') }}
             </a>
 
             <a href="{{ url('/#review') }}"
                class="nav-scroll-link text-l font-medium text-gray-300 hover:text-white transition-colors">
-                Review
+                {{ __('navbar.review') }}
             </a>
 
             <a href="{{ url('/#team') }}"
                class="nav-scroll-link text-l font-medium text-gray-300 hover:text-white transition-colors">
-                Team
+                {{ __('navbar.team') }}
             </a>
+            
+            {{-- Language Switcher --}}
+            <div class="flex bg-white/10 rounded-lg p-1 border border-white/5">
+                <a href="{{ route('lang.switch', 'id') }}" class="px-2 py-1 text-xs font-semibold rounded-md transition-colors {{ App::getLocale() === 'id' ? 'bg-[#F7AD12] text-[#01031C]' : 'text-gray-400 hover:text-white' }}">ID</a>
+                <a href="{{ route('lang.switch', 'en') }}" class="px-2 py-1 text-xs font-semibold rounded-md transition-colors {{ App::getLocale() === 'en' ? 'bg-[#F7AD12] text-[#01031C]' : 'text-gray-400 hover:text-white' }}">EN</a>
+            </div>
         </div>
 
         {{-- Right Icons --}}
@@ -125,20 +131,28 @@
 
 {{-- Mobile Menu --}}
 <div id="mobile-menu"
-     class="fixed top-[68px] left-0 right-0 z-40 hidden md:hidden bg-[#01031C]/80 backdrop-blur-xl
+     class="fixed top-[68px] left-0 right-0 z-40 hidden md:hidden bg-[#01031C]/95 backdrop-blur-xl
             border-t border-white/5 px-4 py-4 space-y-1 shadow-2xl overflow-y-auto max-h-[calc(100vh-68px)]">
+    <div class="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
+        <span class="text-sm font-semibold text-gray-400">Language</span>
+        <div class="flex bg-white/10 rounded-lg p-1 border border-white/5">
+            <a href="{{ route('lang.switch', 'id') }}" class="px-3 py-1 text-xs font-semibold rounded-md transition-colors {{ App::getLocale() === 'id' ? 'bg-[#F7AD12] text-[#01031C]' : 'text-gray-400 hover:text-white' }}">ID</a>
+            <a href="{{ route('lang.switch', 'en') }}" class="px-3 py-1 text-xs font-semibold rounded-md transition-colors {{ App::getLocale() === 'en' ? 'bg-[#F7AD12] text-[#01031C]' : 'text-gray-400 hover:text-white' }}">EN</a>
+        </div>
+    </div>
+
     <a href="{{ route('home') }}"
-       class="nav-scroll-link flex items-center gap-2 text-[#F7AD12] text-sm font-semibold py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/5 transition-colors">
-        Home
+       class="nav-scroll-link flex items-center gap-2 {{ request()->routeIs('home') ? 'text-[#F7AD12] bg-white/5' : 'text-gray-300 hover:text-white hover:bg-white/5' }} text-sm font-semibold py-2.5 px-3 rounded-xl transition-colors">
+        {{ __('navbar.home') }}
     </a>
     <a href="{{ url('/#about') }}"
        class="nav-scroll-link flex items-center gap-2 text-gray-300 hover:text-white text-sm py-2.5 px-3 rounded-xl hover:bg-white/5 transition-colors">
-        About
+        {{ __('navbar.about') }}
     </a>
 
     {{-- Workspace Group --}}
     <div class="py-2.5 px-3">
-        <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-2">Workspace</p>
+        <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-2">{{ __('navbar.workspace') }}</p>
         <div class="flex flex-col space-y-1 pl-2 border-l-2 border-[#123B7A]/30">
             @foreach($navRuangans as $ruangan)
             <a href="{{ route('workspace.show', $ruangan->slug) }}"
@@ -151,34 +165,34 @@
 
     {{-- Ecosystem Group --}}
     <div class="py-2.5 px-3">
-        <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-2">Ecosystem</p>
+        <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-2">{{ __('navbar.ecosystem') }}</p>
         <div class="flex flex-col space-y-1 pl-2 border-l-2 border-[#123B7A]/30">
             <a href="{{ route('talenta') }}"
                class="{{ request()->routeIs('talenta') ? 'text-[#F7AD12] font-semibold bg-white/5' : 'text-gray-400 hover:text-white' }} text-sm py-1.5 px-2 rounded-lg hover:bg-white/5 transition-colors">
-                Talent
+                {{ __('navbar.talent') }}
             </a>
             <a href="{{ route('umkm') }}"
                class="{{ request()->routeIs('umkm') ? 'text-[#F7AD12] font-semibold bg-white/5' : 'text-gray-400 hover:text-white' }} text-sm py-1.5 px-2 rounded-lg hover:bg-white/5 transition-colors">
-                Partner SMEs
+                {{ __('navbar.partner_smes') }}
             </a>
             <a href="{{ route('achievement.index') }}"
                class="{{ request()->routeIs('achievement.index') ? 'text-[#F7AD12] font-semibold bg-white/5' : 'text-gray-400 hover:text-white' }} text-sm py-1.5 px-2 rounded-lg hover:bg-white/5 transition-colors">
-                Achievement
+                {{ __('navbar.achievement') }}
             </a>
         </div>
     </div>
 
     <a href="{{ url('/#gallery') }}"
        class="nav-scroll-link flex items-center gap-2 text-gray-300 hover:text-white text-sm py-2.5 px-3 rounded-xl hover:bg-white/5 transition-colors">
-        Gallery
+        {{ __('navbar.gallery') }}
     </a>
     <a href="{{ url('/#review') }}"
        class="nav-scroll-link flex items-center gap-2 text-gray-300 hover:text-white text-sm py-2.5 px-3 rounded-xl hover:bg-white/5 transition-colors">
-        Review
+        {{ __('navbar.review') }}
     </a>
     <a href="{{ url('/#team') }}"
        class="nav-scroll-link flex items-center gap-2 text-gray-300 hover:text-white text-sm py-2.5 px-3 rounded-xl hover:bg-white/5 transition-colors">
-        Team
+        {{ __('navbar.team') }}
     </a>
 
     {{-- Social Icons (Mobile) --}}
